@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>iTech Play + | سينما التليجرام</title>
     
+    <!-- السكربت الرسمي للتليجرام المصغر -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style>
@@ -80,7 +81,7 @@
             border-color: #E50914;
         }
 
-        /* كود الـ iframe */
+        /* كود الـ iframe المحدث بدون قيود الساندبوكس */
         .player-wrapper iframe {
             position: absolute;
             top: 0;
@@ -91,7 +92,7 @@
             z-index: 2;
         }
 
-        /* الفوتر بتصميم كلاسيكي نظيف */
+        /* الفوتر بتتصميم كلاسيكي نظيف لـ iTech */
         footer {
             background-color: #000000;
             border-top: 1px solid #222222;
@@ -124,13 +125,13 @@
 
     <div class="main-container">
         <div class="player-wrapper">
+            <!-- الـ iframe هنا جاهز ومصرح له بكامل الصلاحيات والملء الشاشة للتليجرام -->
             <iframe 
                 src="https://streamimdb.ru/" 
                 allowfullscreen="true"
                 webkitallowfullscreen="true"
                 mozallowfullscreen="true"
-                allow="autoplay; encrypted-media; fullscreen"
-                sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock">
+                allow="autoplay; encrypted-media; fullscreen">
             </iframe>
         </div>
     </div>
@@ -140,7 +141,7 @@
     </footer>
 
     <script>
-        // تهيئة تطبيق التليجرام المصغر فوراً
+        // تهيئة تطبيق التليجرام المصغر فوراً ليتمدد بكامل الشاشة
         window.Telegram.WebApp.ready();
         window.Telegram.WebApp.expand(); 
     </script>
