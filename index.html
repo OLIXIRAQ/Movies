@@ -3,98 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>iTech Play + | سينما التليجرام</title>
+    <title>iTech Play</title>
     
-    <!-- السكربت الرسمي للتليجرام المصغر -->
+    <!-- سكربت التليجرام الأساسي لتشغيل التطبيق المصغر -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style>
-        /* تصميم سينمائي كامل الشاشة مع لمسة زجاجية علوية */
-        body, html {
-            background-color: #141414;
+        /* تصغير الأبعاد وإلغاء الهوامش تماماً لجعل الموقع يملأ الشاشة بالكامل */
+        html, body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
+            background-color: #000000;
         }
 
-        /* حاوية الموقع بالكامل من الحافة للحافة */
-        .main-container {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* كود الـ iframe بكامل مساحة الشاشة */
-        .main-container iframe {
+        /* كود الـ iframe الممتد من الحافة إلى الحافة */
+        iframe {
             width: 100%;
             height: 100%;
             border: none;
             display: block;
         }
-
-        /* الشريط الزجاجي العلوي العايم الفخم مع تغبيش خفيف جداً */
-        header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            /* خلفية سوداء شبه شفافة جداً مع تأثير التغبيش الزجاجي */
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
-            backdrop-filter: blur(5px); 
-            -webkit-backdrop-filter: blur(5px); /* لدعم متصفحات الآيفون داخل التليجرام */
-            border-bottom: 1px solid rgba(229, 9, 20, 0.15); /* خط أحمر نيتفليكس ناعم جداً شفاف */
-            padding: 12px 0;
-            text-align: center;
-            z-index: 10; /* يضمن بقاء الشريط فوق موقع الأفلام دائماً */
-            pointer-events: none; /* يخلي المستخدم يكدر يضغط على أزرار الموقع اللي ورة الشريط بدون مشاكل */
-        }
-
-        /* النص باللون الأحمر النيتفليكس الحاد والمودرن */
-        header h1 {
-            color: #E50914;
-            margin: 0;
-            font-size: 19px;
-            font-weight: 800;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            /* إضافة حماية خفيفة للنص حتى يبرز إذا كانت خلفية الفيلم فاتحة */
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); 
-        }
-
-        header p {
-            color: rgba(229, 225, 225, 0.8);
-            margin: 3px 0 0 0;
-            font-size: 10px;
-            font-weight: 500;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-        }
     </style>
 </head>
 <body>
 
-    <!-- الشريط الزجاجي المغبش العايم بالأعلى جداً -->
-    <header>
-        <h1>iTech Play +</h1>
-        <p>أحدث الأفلام والمسلسلات مجاناً</p>
-    </header>
-
-    <!-- موقع الأفلام شغال بالخلفية بكامل الشاشة -->
-    <div class="main-container">
-        <iframe 
-            src="https://streamimdb.ru/search" 
-            allowfullscreen="true"
-            webkitallowfullscreen="true"
-            mozallowfullscreen="true"
-            allow="autoplay; encrypted-media; fullscreen">
-        </iframe>
-    </div>
+    <!-- السيرفر المفتوح والمخصص للعمل داخل الـ iframe بدون حظر -->
+    <iframe 
+        src="https://multiembed.mov/" 
+        allowfullscreen="true"
+        webkitallowfullscreen="true"
+        mozallowfullscreen="true"
+        allow="autoplay; encrypted-media; fullscreen">
+    </iframe>
 
     <script>
-        // تهيئة الـ Mini App للتليجرام ليتمدد بكامل شاشة الجهاز
+        // إعطاء أمر للتليجرام بفتح التطبيق بكامل مساحة شاشة الموبايل تلقائياً
         window.Telegram.WebApp.ready();
         window.Telegram.WebApp.expand(); 
     </script>
