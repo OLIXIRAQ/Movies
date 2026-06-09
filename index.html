@@ -9,139 +9,92 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style>
-        /* تصميم فيكتور حديث مستوحى من نيتفليكس */
-        body {
-            background-color: #141414; /* أسود نيتفليكس الرسمي */
-            color: #e5e5e5;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* تصميم سينمائي كامل الشاشة مع لمسة زجاجية علوية */
+        body, html {
+            background-color: #141414;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* الهيدر بتصميم فيكتور فلات مع خط أحمر حاد */
-        header {
-            background-color: #000000;
-            border-bottom: 3px solid #E50914; /* أحمر نيتفليكس الأساسي */
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            z-index: 10;
-        }
-
-        header h1 {
-            color: #E50914; /* اللون الأحمر الحاد للبراند */
-            margin: 0;
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        header p {
-            color: #999999;
-            margin: 6px 0 0 0;
-            font-size: 11px;
-            font-weight: 500;
-        }
-
-        /* حاوية مشغل الأفلام */
-        .main-container {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             width: 100%;
-            box-sizing: border-box;
-            background: linear-gradient(180deg, rgba(20,20,20,1) 0%, rgba(8,8,8,1) 100%);
-        }
-
-        /* إطار المشغل - ستايل فيكتور نظيف وحواف حادة دائرية */
-        .player-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 850px;
-            padding-bottom: 56.25%; /* أبعاد 16:9 السينمائية */
-            height: 0;
-            background-color: #000000;
-            border-radius: 8px; /* حواف مودرن */
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
-            border: 2px solid #222222;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
-            transition: border-color 0.3s ease;
         }
 
-        /* تأثير فيكتور خفيف عند التفاعل */
-        .player-wrapper:hover {
-            border-color: #E50914;
+        /* حاوية الموقع بالكامل من الحافة للحافة */
+        .main-container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            z-index: 1;
         }
 
-        /* كود الـ iframe المحدث بدون قيود الساندبوكس */
-        .player-wrapper iframe {
+        /* كود الـ iframe بكامل مساحة الشاشة */
+        .main-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* الشريط الزجاجي العلوي العايم الفخم مع تغبيش خفيف جداً */
+        header {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            border: none;
-            z-index: 2;
-        }
-
-        /* الفوتر بتتصميم كلاسيكي نظيف لـ iTech */
-        footer {
-            background-color: #000000;
-            border-top: 1px solid #222222;
+            /* خلفية سوداء شبه شفافة جداً مع تأثير التغبيش الزجاجي */
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+            backdrop-filter: blur(5px); 
+            -webkit-backdrop-filter: blur(5px); /* لدعم متصفحات الآيفون داخل التليجرام */
+            border-bottom: 1px solid rgba(229, 9, 20, 0.15); /* خط أحمر نيتفليكس ناعم جداً شفاف */
+            padding: 12px 0;
             text-align: center;
-            padding: 15px;
-            font-size: 11px;
-            color: #737373;
-            z-index: 10;
-            letter-spacing: 0.2px;
-        }
-        
-        footer a {
-            color: #E50914;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.2s ease;
+            z-index: 10; /* يضمن بقاء الشريط فوق موقع الأفلام دائماً */
+            pointer-events: none; /* يخلي المستخدم يكدر يضغط على أزرار الموقع اللي ورة الشريط بدون مشاكل */
         }
 
-        footer a:hover {
-            color: #ff1e27;
+        /* النص باللون الأحمر النيتفليكس الحاد والمودرن */
+        header h1 {
+            color: #E50914;
+            margin: 0;
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            /* إضافة حماية خفيفة للنص حتى يبرز إذا كانت خلفية الفيلم فاتحة */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); 
+        }
+
+        header p {
+            color: rgba(229, 225, 225, 0.8);
+            margin: 3px 0 0 0;
+            font-size: 10px;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
         }
     </style>
 </head>
 <body>
 
+    <!-- الشريط الزجاجي المغبش العايم بالأعلى جداً -->
     <header>
         <h1>iTech Play +</h1>
-        <p>أحدث الأفلام والمسلسلات مجاناً وبأعلى جودة</p>
+        <p>أحدث الأفلام والمسلسلات مجاناً</p>
     </header>
 
+    <!-- موقع الأفلام شغال بالخلفية بكامل الشاشة -->
     <div class="main-container">
-        <div class="player-wrapper">
-            <!-- الـ iframe هنا جاهز ومصرح له بكامل الصلاحيات والملء الشاشة للتليجرام -->
-            <iframe 
-                src="https://streamimdb.ru/" 
-                allowfullscreen="true"
-                webkitallowfullscreen="true"
-                mozallowfullscreen="true"
-                allow="autoplay; encrypted-media; fullscreen">
-            </iframe>
-        </div>
+        <iframe 
+            src="https://streamimdb.ru/search" 
+            allowfullscreen="true"
+            webkitallowfullscreen="true"
+            mozallowfullscreen="true"
+            allow="autoplay; encrypted-media; fullscreen">
+        </iframe>
     </div>
 
-    <footer>
-        جميع الحقوق محفوظة © لـ <a href="https://t.me/iteech" target="_blank">iTech (@iteech)</a> - تطبيق تليجرام المصغر 2026
-    </footer>
-
     <script>
-        // تهيئة تطبيق التليجرام المصغر فوراً ليتمدد بكامل الشاشة
+        // تهيئة الـ Mini App للتليجرام ليتمدد بكامل شاشة الجهاز
         window.Telegram.WebApp.ready();
         window.Telegram.WebApp.expand(); 
     </script>
